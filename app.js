@@ -41,16 +41,31 @@ const kivi= new Fruit({
 
 const defaultItem= [orange,banana,kivi];
 
-async function getAllFruits() {  
+// async function getAllFruits() {  
+//     try {
+//       const fruits = await Fruit.find({}).exec();
+//       console.log('All fruits:', fruits);
+//     } catch (err) {
+//       console.error('Error:', err);
+//     }
+//   }
+  
+//   getAllFruits();
+
+
+  async function getAllFruitNames() {
     try {
-      const fruits = await Fruit.find({}).exec();
-      console.log('All fruits:', fruits);
+      const fruits = await Fruit.find({}, 'name').exec();
+      fruits.forEach((fruit) => {
+        console.log('Fruit Name:', fruit.name);
+      });
     } catch (err) {
       console.error('Error:', err);
     }
   }
   
-  getAllFruits();
+  getAllFruitNames();
+  
 
 // Fruit.insertMany(defaultItem,{
 //     if(err){
