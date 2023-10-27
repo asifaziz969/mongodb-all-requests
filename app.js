@@ -41,12 +41,23 @@ const kivi= new Fruit({
 
 const defaultItem= [orange,banana,kivi];
 
-Fruit.insertMany(defaultItem,{
-    if(err){
-      console.log(err);
+async function getAllFruits() {  
+    try {
+      const fruits = await Fruit.find({}).exec();
+      console.log('All fruits:', fruits);
+    } catch (err) {
+      console.error('Error:', err);
     }
+  }
+  
+  getAllFruits();
+
+// Fruit.insertMany(defaultItem,{
+//     if(err){
+//       console.log(err);
+//     }
  
-  });
+//   });
 
 
 const personSchema =new mongoose.Schema({  
@@ -67,3 +78,4 @@ ratig:22,
 person.save();
 
 
+  
